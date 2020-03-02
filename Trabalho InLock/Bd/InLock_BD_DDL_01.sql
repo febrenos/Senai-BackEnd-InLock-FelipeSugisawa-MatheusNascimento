@@ -1,0 +1,39 @@
+--DDL
+--InLock_BD_DDL_01.sql
+
+CREATE DATABASE Inlock_Games_Tarde;
+GO
+
+USE Inlock_Games_Tarde;
+GO
+
+CREATE TABLE  TipoUsuario(
+	IdTipoUsuario INT PRIMARY KEY IDENTITY,
+	Titulo VARCHAR (255) UNIQUE NOT NULL
+);
+GO
+
+CREATE TABLE  Usuario(
+	IdUsuario INT PRIMARY KEY IDENTITY,
+	Email VARCHAR (255) UNIQUE NOT NULL,
+	Senha VARCHAR (255) NOT NULL
+);
+GO
+
+CREATE TABLE  Estudio(
+	IdEstudio INT PRIMARY KEY IDENTITY,
+	NomeEstudio VARCHAR (255) NOT NULL
+);
+GO
+
+CREATE TABLE  Jogos(
+	IdJogo		INT PRIMARY KEY IDENTITY,
+	NomeJogos		VARCHAR (255)	NOT NULL,
+	Descricao		VARCHAR (255)	NOT NULL,
+	DataLancamento  DATETIME2		NOT NULL,
+	Valor			VARCHAR (255)	NOT NULL,	
+	IdEstudio		INT FOREIGN KEY REFERENCES Estudio (IdEstudio)
+	
+);
+GO
+
